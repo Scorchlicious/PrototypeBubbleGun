@@ -142,6 +142,8 @@ public class SecondStolenController : MonoBehaviour
         GameObject respawnObj = GameObject.Find("SpawnPlace");
         respawnPosition = respawnObj.transform;
         PlayerEventBus.Invoke(new PlayerJoin(playerCamera));
+        Debug.Log("camera added");
+
     }
 
     void Update()
@@ -187,7 +189,7 @@ public class SecondStolenController : MonoBehaviour
         desiredDirection += verticalMovement;
         characterController.Move(desiredDirection * Time.deltaTime);
 
-        if (respawnPosition != null && transform.position.y < -90)
+        if (transform.position.y < -90)
         {
             transform.position = respawnPosition.position;
         }
